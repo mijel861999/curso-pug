@@ -68,3 +68,32 @@ html
 			background: 'black',
 			'font-size': '2em'
 		}) Chau
+
+		//-Atributos de clase
+		p(class="texto rojo") Texto 
+		p(class=["texto", "rojo"]) Texto2
+
+		- var clases = ['rojo', 'centrado', 'fondo']
+		p(class="azul" class=clases) Texto3
+
+		//- Clase e ID literal
+		a.azul123(class=clases) Texto4
+		a#top(class=clases) Texto 05
+
+		//- &attributes({})
+		//- p&attributes({
+		//- 	'data-link': 'false',
+		//- 	'data-text': 'true'
+		//- })
+
+		//- Case (case var when & default)
+		- var edad1 = 1;
+		case edad1 
+			when -2
+			when -1
+			when 0
+				p Eres un bebé
+			when 1: p Tienes un año 
+			default 
+				p Tienes más de un año
+
