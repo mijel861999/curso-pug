@@ -97,3 +97,88 @@ html
 			default 
 				p Tienes más de un año
 
+		//- Datos booleanosp
+		- var verdadero =true
+		- var falso = false
+
+		if falso === true
+			p Verdad
+		else
+			p Falso
+
+		//- Iteración Each
+		- var lista = ["Pasear al perro", "Estudiar", "Programar"];
+		ol
+			each item in lista
+				li= item
+
+
+		//- While
+		- var veces = 5
+		while (veces > 0)
+			//- cuando se pone el -- al último, incrementará después de ejecutar el while
+			//- cuando se pone el -- al principio, incrementará antes de ejecutar el while
+			p= veces --
+		p #{veces}
+
+		-var veces1 = 5;
+		while (veces1 < 11)
+			p Hola
+			- veces1++
+
+
+		//- Unless (negación del if)
+		- var pagina = "index"
+		if (pagina !== "index")
+			p Index
+
+		unless !(pagina === "index") 
+			//-  unless !(pagina === "index") ES IGUAL A  if !(!(pagina === "index"))
+			p Verdad
+
+
+		-var cantidad = 3
+		while (cantidad --) 
+			p #{cantidad}
+
+
+
+		//- Mixins -> Crear código reusable
+		mixin listado_tareas
+			ul 
+				li Estudiar 
+				li Programar
+				li Hacer ejercicio
+
+		+listado_tareas
+		+listado_tareas
+
+		mixin imprimir(texto)
+			p.clase= texto
+
+		+imprimir('Hola mundo')
+
+		mixin section(titulo)
+			section(class=attributes.class)
+				h1.titulo= titulo
+				if block
+					block 
+				else
+					p No hay contenido que mostrar
+
+
+		+section('Título de la sección')(class="center")
+		+section('Título con bloque')
+			p Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, accusamus aut, enim aliquam sunt blanditiis alias minus, ipsum iusto voluptas molestias dolor tenetur repellat sit! Nesciunt non illum ab enim.
+
+
+		//- Rest argumnets -> Pasar la cantidad de arguentos que querramos a nuestro mixin
+		mixin lista(id, ...items)
+			ul(id=id)
+				each item in items
+					li= item
+
+		+lista('listado', 'Programar', 'Hacer ejercicio', 'Pasear al perro')
+
+
+		//- Include Texto plano
